@@ -168,7 +168,17 @@ do {
                 bosshp -= getRandomInt(mindmg, maxdmg + 1);
                 if (rec > 0) {
                     nhp += hp * rec;
-                }
+            }
+            else if (warmenu=="ok"|| warmenu=="OK"|| warmenu=="oK"|| warmenu=="Ok"|| warmenu=="ок"|| warmenu=="Ок"|| warmenu=="оК"|| warmenu=="ОК"){
+                alert("Читер грёбаный");
+                alert("БАН");
+                person = 0;
+                name = "ЧИТЕР";
+                maxdmg = 0;
+                hp = 0;
+                nom = 0;
+                bag();
+                pro=1;}
             } else if (warmenu = "admin") {
                 bosshp = 0;
             }
