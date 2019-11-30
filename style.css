@@ -1,0 +1,52 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.but1 {
+    background: navy;
+    color: white;
+    top: 100px;
+    margin-top: 100px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+}
+
+.image {
+    position: absolute;
+    left: 480px;
+}
+
+#fight {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    display: none;
+}
+
+#fight.nohide {
+    display: block;
+}
+
+.wrapper {
+    background: white;
+}
+
+#pers {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    display: none;
+}
+
+#pers.nohide {
+    display: block;
+}
+
+.wrappers {
+    background: white;
+}
