@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <script src="demo.js"></script>
-    <title>Как вы держите устройство</title>
+
+    <title>Document</title>
 </head>
 
-<body>
-    <div id="window_sizer"></div>
-    <button id="window_sizer_button">Нажмите чтобы запустить!</button>
+<body onload="window_sizer_function()">
+    <div id="window_sizer">f</div>
+    
     <script>
-    window_sizer_button.onclick= function(){
-        window_sizer_button.style.display="none";
+    function window_sizer_function(){
+        
         d=setInterval(check_window_size,1);
         function check_window_size(){
             if (window.matchMedia("(max-width: 600px)").matches) {
