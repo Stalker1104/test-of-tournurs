@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="demo.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="window_sizer">f</div>
+    <button id="window_sizer_button">press</button>
+    <script>
+    window_sizer_button.onclick= function(){
+        window_sizer_button.style.display="none";
+        d=setInterval(check_window_size,1);
+        function check_window_size(){
+            if (window.matchMedia("(max-width: 600px)").matches) {
+                window_sizer.innerHTML="telephone"
+          } else {
+            window_sizer.innerHTML="computer"
+          }
+        }
+    
+    }
+    //function check_window_size(){
+    //        if (window.matchMedia("(min-width: 400px)").matches) {
+    //        /* the viewport is at least 400 pixels wide */
+    //      } else {
+    //        /* the viewport is less than 400 pixels wide */
+    //      }
+    //    }
+    </script>
+       
+</body>
+
+</html>
