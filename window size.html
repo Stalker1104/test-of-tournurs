@@ -11,17 +11,17 @@
 </head>
 
 <body>
-    <div id="window_sizer">f</div>
-    <button id="window_sizer_button">press</button>
+    <div id="window_sizer"></div>
+    <button id="window_sizer_button">Нажмите чтобы запустить!</button>
     <script>
     window_sizer_button.onclick= function(){
         window_sizer_button.style.display="none";
         d=setInterval(check_window_size,1);
         function check_window_size(){
             if (window.matchMedia("(max-width: 600px)").matches) {
-                window_sizer.innerHTML="telephone"
+                window_sizer.innerHTML="Вы держите устройство вертикально"
           } else {
-            window_sizer.innerHTML="computer"
+            window_sizer.innerHTML="Вы держите устройство горизонтально"
           }
         }
     
