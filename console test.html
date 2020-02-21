@@ -5,28 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>console test</title>
+    <script src="list_of_functions.js"></script>
+    <title>Console test</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700&display=swap&subset=cyrillic,cyrillic-ext,greek,latin-ext,vietnamese" rel="stylesheet">
 </head>
 
-<body onload="console_check_value()">
+<body onload="console_check_value()" style="font-family: 'Orbitron', sans-serif;">
 <div style="width:100%;height:45vh;background-color: rgba(0, 0, 0, 0.75);display:none;" id="console_game_div">
-  <input style="width:100%;height:90%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:white;" type="text" id="console_game">
-  <button id="submit_console_game_button" style="display: none;">Исполнить</button>
+  <input autofocus required placeholder="Введите команду" style="font-family: 'Orbitron', sans-serif;width:100%;height:10%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:white;position: sticky;top: 38%;" type="text" id="console_game">
+  <!-------->
+  <div id="console_game_string_7" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 1vh;"> string_7</div>
+  <div id="console_game_string_6" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 6vh;"> string_6</div>
+  <div id="console_game_string_5" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 11vh;">string_5</div>
+  <div id="console_game_string_4" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 16vh;">string_4</div>
+  <div id="console_game_string_3" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 21vh;">string_3</div>
+  <div id="console_game_string_2" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 26vh;">string_2</div>
+  <div id="console_game_string_1" style="width:100%;height:5%;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);color:rgb(0, 255, 0);position: absolute;top: 31vh;">string_1</div>
+
+
+
+
+
 </div>
     <button id="open_console_mobile" style="display: none; position:absolute;top:80%;left:45%;">Открыть консоль</button>
     <div id="open_console_computer" style="display: none; position:absolute;top:80%;left:45%;">Чтобы открыть консоль нажмите английскую K</div>
 <script>
+var wrong_function_str="Invalid syntax"
+var right_function_str="Syntax successful"
+var console_game_string_1_value="";
+var console_game_string_2_value="";
+var console_game_string_3_value="";
+var console_game_string_4_value="";
+var console_game_string_5_value="";
+var console_game_string_6_value="";
+var console_game_string_7_value="";
 
+var stop_time=0;
+var stop_arg=false;
 
-function are_user_use_mobile(){
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    mobile=true;
-  } else {
-    mobile=false;
-  }
-  return mobile;
-}
+var most_litle_number= -999999999999;
+var most_large_number= 999999999999;
+var console_game_string_1_type="command";
+var console_game_string_2_type="command";
+var console_game_string_3_type="command";
+var console_game_string_4_type="command";
+var console_game_string_5_type="command";
+var console_game_string_6_type="command";
+var console_game_string_7_type="command";
 
+console_game_string_1.innerHTML=console_game_string_1_value;
+console_game_string_2.innerHTML=console_game_string_2_value;
+console_game_string_3.innerHTML=console_game_string_3_value;
+console_game_string_4.innerHTML=console_game_string_4_value;
+console_game_string_5.innerHTML=console_game_string_5_value;
+console_game_string_6.innerHTML=console_game_string_6_value;
+console_game_string_7.innerHTML=console_game_string_7_value;
 
 
 open_console_mobile.onclick= function(){
@@ -41,11 +74,7 @@ function console_check_value(){
   function display_how_to_open_console(){
     if(are_user_use_mobile()==true){
       open_console_mobile.style.display="block"
-    }else{
-      open_console_computer.style.display="block"
-    }
-  }
-  console_check_interval=setInterval(console_check_value_1,1);
+      console_check_interval=setInterval(console_check_value_1,1);
   function console_check_value_1(){
     if(console_game.value!=""){
       submit_console_game_button.style.display="block";
@@ -53,37 +82,216 @@ function console_check_value(){
       submit_console_game_button.style.display="none";
     }
   }
+    }else{
+      open_console_computer.style.display="block"
+    }
+  }
+  
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-submit_console_game_button.onclick=function(){
-  console_game_value=console_game.value;
-  var target_console=console_game_value[0]+console_game_value[1];
-  if(target_console=="g_"){
-    if(console_game_value[2]=="h" && console_game_value[3]=="e" && console_game_value[4]=="l" && console_game_value[5]=="l" && console_game_value[6]=="o"){
-      alert("IT WORKS!!!!!!!!!!!!! YESSSSSSSSSSS!!!! Hello by the way!")
+
+
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyK'/* && (event.ctrlKey || event.metaKey)*/) {
+    if(are_console_game_opened==true){console_game_div.style.display="none"; are_console_game_opened=false;console_game.value=""}
+    else if(are_console_game_opened==false){console_game_div.style.display="block"; are_console_game_opened=true;}
+    
+  }
+  });
+/*------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------------submit-------*/
+  document.addEventListener('keydown', function(event) {
+  if (event.code == 'Enter'/* && (event.ctrlKey || event.metaKey)*/) {
+    if(are_console_game_opened!=false){
+      console_game_value=console_game.value;
+  var target_console=console_game_value[0];
+  var type_function_console="";
+  var function_console="";
+  var variable_1="";
+  var variable_2="";
+  var variable_3="";
+  var variable_4="";
+
+
+  wrong_function_str=console_game.value+"&#160;&#160;&#160;>&#160;&#160;&#160;"+"Invalid syntax"
+  right_function_str=console_game.value+"&#160;&#160;&#160;>&#160;&#160;&#160;"+"Syntax successful"
+  too_litle_function_str=console_game.value+"&#160;&#160;&#160;>&#160;&#160;&#160;"+"Value too small"
+  too_large_function_str=console_game.value+"&#160;&#160;&#160;>&#160;&#160;&#160;"+"Value too large"
+  var i=2;
+  for(i=2;i<100;i++){
+    var liter=console_game_value[i];
+    if(liter!="_"){
+      type_function_console+=liter;
+    }else{
+      break;
+    }
+    
+    
+  }
+  
+
+  for(var u=3+type_function_console.length;u<100;u++){
+    var liter=console_game_value[u];
+    if(liter!="_"){
+     
+      function_console+=liter;
+      
+    }else{
+      
+      break;
+    }
+    
+    
+  }
+
+  for(var t=4+type_function_console.length+function_console.length;t<100;t++){
+    var liter=console_game_value[t];
+    if(liter!="_"){
+     
+      variable_1+=liter;
+      
+    }else{
+      break;
+      //variable1;
+      
+    }
+  }
+
+  for(var r=5+type_function_console.length+function_console.length+variable_1.length;r<100;r++){
+    var liter=console_game_value[r];
+    if(liter!="_"){
+     
+      variable_2+=liter;
+      
+    }else{
+      break;
 
       
     }
-    else if(console_game_value[2]=="s" && console_game_value[3]=="t" && console_game_value[4]=="o" && console_game_value[5]=="p" && console_game_value[6]=="_" && console_game_value[7]=="a" && console_game_value[8]=="n" && console_game_value[9]=="t" && console_game_value[10]=="i" && console_game_value[11]=="-"&& console_game_value[12]=="c" && console_game_value[13]=="h" && console_game_value[14]=="e" && console_game_value[15]=="a"&& console_game_value[16]=="t" ){
-      alert("Anti-cheat stoped!")
+  }
+  for(var e=6+type_function_console.length+function_console.length+variable_1.length+variable_2.length;e<100;e++){
+    var liter=console_game_value[e];
+    if(liter!="_"){
+     
+      variable_3+=liter;
+      
+    }else{
+      break;
+
+      
     }
-    else{
-      alert("Wrong function!")
+  }
+  for(var l=7+type_function_console.length+function_console.length+variable_1.length+variable_2.length+variable_3.length;l<100;l++){
+    var liter=console_game_value[l];
+    if(liter!="_"){
+     
+      variable_4+=liter;
+      
+    }else{
+      break;
+
+      
+    }
+  }
+  /*****************************************************/
+  if(target_console=="g"){
+    if(type_function_console=="stop"){
+      if(function_console=="anti-cheat"){
+        if(variable_1=="true"){
+          if((variable_2-0)>0){
+            console_game_list(right_function_str,"console");
+            console_game_list("Anti-cheat stoped for: "+variable_2+" seconds","result")
+          }else if(variable_2="forever"){
+            console_game_list(right_function_str,"console");
+            console_game_list("Anti-cheat stoped for: forever","result")
+          }else{
+            console_game_list(wrong_function_str,"wrong");
+          }
+        }else{
+          console_game_list(wrong_function_str,"wrong");
+        }
+      }else{
+        console_game_list(wrong_function_str,"wrong");
+      }
+    }else if(type_function_console=="start") {
+      if(function_console=="anti-cheat"){
+        if(variable_1=="true"){
+          console_game_list(right_function_str,"console");
+          console_game_list("Anti-cheat started","result")
+        }else{
+          console_game_list(wrong_function_str,"wrong");
+        }
+      }else{
+        console_game_list(wrong_function_str,"wrong");
+      }
+    }else{
+      console_game_list(wrong_function_str,"wrong");
+    }
+  }else if(target_console=="p"){
+    
+  }else if(target_console=="t"){
+    if(type_function_console=="math"){
+      if(function_console=="plus"){
+        if((variable_1-0)>most_litle_number && (variable_2-0)>most_litle_number && (variable_1-0)<most_large_number && (variable_2-0)<most_large_number){
+          console_game_list(right_function_str,"console");
+          console_game_list(variable_1+"+"+variable_2+"="+((variable_1-0)+(variable_2-0)),"result")
+        }else if((variable_1-0)<most_litle_number || (variable_2-0)<most_litle_number||((variable_1-0)<most_litle_number && (variable_2-0)<most_litle_number)){
+          console_game_list(too_litle_function_str,"wrong");
+        }else if((variable_1-0)>most_large_number || (variable_2-0)>most_large_number||((variable_1-0)>most_large_number && (variable_2-0)>most_large_number)){
+          console_game_list(too_large_function_str,"wrong");
+        }else{
+          console_game_list(wrong_function_str,"wrong");
+        }
+      }
+      else if(function_console=="minus"){
+        if((variable_1-0)>most_litle_number && (variable_2-0)>most_litle_number && (variable_1-0)<most_large_number && (variable_2-0)<most_large_number){
+          console_game_list(right_function_str,"console");
+          console_game_list(variable_1+"-"+variable_2+"="+((variable_1-0)-(variable_2-0)),"result")
+        }else if((variable_1-0)<most_litle_number || (variable_2-0)<most_litle_number||((variable_1-0)<most_litle_number && (variable_2-0)<most_litle_number)){
+          console_game_list(too_litle_function_str,"wrong");
+        }else if((variable_1-0)>most_large_number || (variable_2-0)>most_large_number||((variable_1-0)>most_large_number && (variable_2-0)>most_large_number)){
+          console_game_list(too_large_function_str,"wrong");
+        }else{
+          console_game_list(wrong_function_str,"wrong");
+        }
+      }
+    }
+  }else if(target_console=="o"){
+    if(type_function_console=="clear-history"){
+      console_game_string_7.innerHTML="";
+      console_game_string_6.innerHTML="";
+      console_game_string_5.innerHTML="";
+      console_game_string_4.innerHTML="";
+      console_game_string_3.innerHTML="";
+      console_game_string_2.innerHTML="";
+      console_game_string_1.innerHTML="";
+      console_game_string_7_value="";
+      console_game_string_6_value="";
+      console_game_string_5_value="";
+      console_game_string_4_value="";
+      console_game_string_3_value="";
+      console_game_string_2_value="";
+      console_game_string_1_value=""
     }
   }else{
-      alert("Wrong function!")
+    console_game_list(wrong_function_str,"wrong");
   }
+  /*****************************************************/
+
+
+
+
+
+
   console_game.value=""
-  console_game_div.style.display="none"
-  are_console_game_opened=false;
-}
-
-
-  document.addEventListener('keydown', function(event) {
-  if (event.code == 'KeyK'/* && (event.ctrlKey || event.metaKey)*/) {
-    if(are_console_game_opened==true){console_game_div.style.display="none"; are_console_game_opened=false;}
-    else if(are_console_game_opened==false){console_game_div.style.display="block"; are_console_game_opened=true;}
-    
+  /*console_game_div.style.display="none"
+  are_console_game_opened=false;*/
+  /*var target_console="";
+  var type_function_console="";
+  var function_console="";
+  var variable_1="";
+  var variable_2="";*/
+    }
   }
   });
     
