@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="list_of_animation_functions.js"></script>
+    <title>animation 2.0</title>
+</head>
+
+<body onload="get_position()" style="background-image: url(back_animation_2.bmp);">
+  <img src="pers_right.jpg" alt="" id="person_img" style="height:33vh;position:absolute;left:0%;top:0%;">
+  <script>
+var person_left="";
+var person_top ="";
+function get_position(){
+  
+  
+  for (let r = 0; r < 100; r++) {
+    if(person_img.style.left[r]!="%"){
+      person_left+=person_img.style.left[r];
+    }else{
+      console.log("Left found!")
+      person_left-=0;
+      break;
+      console.log("Error: left break failed!")
+    }
+    
+  }
+  for (let l = 0; l < 100; l++) {
+    if(person_img.style.top[l]!="%"){
+      person_top+=person_img.style.top[l];
+    }else{
+      console.log("Top found!")
+      person_top-=0;
+      break;
+      console.log("Error: top break failed!")
+    }
+    
+  }
+  console.log("Position found!\nLeft: "+person_left+"\nTop: "+person_top)
+  return person_left
+return person_top 
+  
+}
+
+
+//left
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyA'||event.code == 'ArrowLeft') {
+    person_left--;
+    person_img.style.left=person_left+"%"
+    console.log("Left: "+person_left+"\nImage: "+person_img.style.left)
+    
+  }
+  });
+  //right
+  document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyD'||event.code == 'ArrowRight') {
+    person_left++;
+    person_img.style.left=person_left+"%"
+    console.log("Left: "+person_left+"\nImage: "+person_img.style.left)
+    
+  }
+  });
+  //bottom
+  document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyS'||event.code == 'ArrowDown') {
+    person_top++;
+    person_img.style.top=person_top+"%"
+    console.log("Top: "+person_top+"\nImage: "+person_img.style.top)
+    
+  }
+  });
+  //top
+  document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyW'||event.code == 'ArrowUp') {
+    const jump_1=person_top-10;
+    const jump_2=person_top;
+    var jump_phase=1;
+    var jump_time=setInterval(jump_function,10)
+    function jump_function(){
+      if(person_top>jump_1 && jump_phase==1){
+        person_top-=0.5;
+        person_img.style.top=person_top+"%"
+        console.log("Top: "+person_top+"\nImage: "+person_img.style.top)
+      }else{
+        jump_phase=2;
+        person_top+=0.5;
+        person_img.style.top=person_top+"%"
+        console.log("Top: "+person_top+"\nImage: "+person_img.style.top)
+        if(person_top>=jump_2){
+          clearInterval(jump_time)
+        }
+      }
+      
+    }
+    
+  }
+  });
+
+
+/*
+  document.addEventListener('keydown', function(event) {
+  alert(event.code);
+  });*/
+  </script>
+</body>
+
+</html>
